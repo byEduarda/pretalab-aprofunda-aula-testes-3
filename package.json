@@ -20,5 +20,12 @@
     "build": "tsc",
     "test": "jest --config jest.config.js",
     "start": "node dist/main.js"
-  }
+  },
+  "name": "pretalab-aprofunda-aula-testes-3",
+  "version": "1.0.0",
+  "description": "A estrutura do projeto segue os princípios da **Clean Architecture**, separando responsabilidades em diferentes camadas:",
+  "main": "jest.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
