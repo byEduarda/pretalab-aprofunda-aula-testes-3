@@ -37,6 +37,13 @@ export class MongoUserRepository implements UserRepository {
             },
             { new: true }
         );
+        return doc ? this.toEntity(doc) : null
+    }
+
+    async delete(id: string) {
+
+        await userModel.findByIdAndDelete({id});
+        
     }
 
 }
