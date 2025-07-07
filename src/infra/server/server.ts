@@ -9,7 +9,7 @@ app.use('/users', userRoutes);
 const URI = process.env.MONGO_URI;
 
 if(!URI){
-    throw new Error(' a variavel não está definida')
+    throw new Error('a variavel não está definida')
 }
 
 connectMongo(URI)
