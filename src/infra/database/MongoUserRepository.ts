@@ -1,17 +1,17 @@
 import { User } from '../../core/entities/User';
 import { UserRepository } from '../../core/repositories/UserRepository';
-import { userModel} from '../database/mongooseUserModel';
+import { userModel } from '../database/mongooseUserModel';
 
 export class MongoUserRepository implements UserRepository {
     private toEntity(doc: any): User {
         return new User(doc.id, doc.name, doc.login, doc.email, doc.password)
     }
 
-    async save(user: User){
+    async save(user: User) {
         await userModel.create(user)
     }
 
-    async findByEmail(email: string){
+    async findByEmail(email: string) {
 
         const doc = await userModel.findOne({ email });
 
@@ -19,7 +19,7 @@ export class MongoUserRepository implements UserRepository {
 
     }
 
-    async findById(id: string){
+    async findById(id: string) {
 
         const doc = await userModel.findOne({ id });
 
@@ -28,7 +28,11 @@ export class MongoUserRepository implements UserRepository {
     }
 
     async update(user: User) {
-        const doc = await userModel.findByIdAndUpdate;
+        const doc = await userModel.findByIdAndUpdate(
+            user.id, {
+                name: user.name, login: user.login, email: user.email, password: user.password
+            }
+        );
     }
-   
+
 }
