@@ -30,8 +30,12 @@ export class MongoUserRepository implements UserRepository {
     async update(user: User) {
         const doc = await userModel.findByIdAndUpdate(
             user.id, {
-                name: user.name, login: user.login, email: user.email, password: user.password
-            }
+                name: user.name,
+                login: user.login,
+                email: user.email,
+                password: user.password
+            },
+            { new: true }
         );
     }
 
